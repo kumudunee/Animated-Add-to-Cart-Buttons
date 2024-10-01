@@ -1,0 +1,114 @@
+/* ------------ GOOGLE FONTS ------------ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* ------------ VARIABLES ------------ */
+:root {
+  /* FONT */
+  --font: 'Poppins', sans-serif;
+
+  /* COLORS */
+  --color: #fff; /* White color for contrast against black */
+  --bg-color: #f7f7f7; 
+  --primary-color: #000; /* Black theme */
+  --highlight-color: #08c1cf; /* Accent color for highlights */
+  --glow-color: rgba(255, 255, 255, 0.4); /* White glow effect */
+}
+
+/* ---------- BUTTON STYLES ------------ */
+.btn {
+  width: 12em; 
+  height: 4em; 
+  background-color: var(--primary-color); /* Black background */
+  border: 2px solid var(--highlight-color); /* Accent border */
+  border-radius: 2em; 
+  box-shadow: 0 0 1em var(--glow-color); /* Subtle white glow */
+  outline: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.btn:hover {
+  background-color: var(--primary-color); /* Change to highlight color on hover */
+  box-shadow: 0 0 2em var(--glow-color); /* Stronger glow on hover */
+}
+
+.btn:active {
+  transform: scale(0.95); /* Slight scale down on click */
+  box-shadow: 0 0 2.5em var(--glow-color), 0 0 4em var(--highlight-color); /* Intense glow */
+}
+
+.btn__text {
+  font-size: 1.2rem; 
+  font-weight: 600;
+  color: var(--color); /* White text for good contrast */
+  position: absolute;
+  transition: opacity 0.3s ease;
+}
+
+.btn__text--second {
+  opacity: 0;
+}
+
+.btn__icon {
+  width: 3em;  /* Larger GIF size */
+  height: 3em;  /* Maintain aspect ratio */
+  position: absolute;
+  display: none;  /* Hide GIF initially */
+  right: -3em; /* Start off-screen to the right */
+}
+
+.btn.active .btn__icon {
+  display: block;  /* Show the GIF when button is active */
+}
+
+.btn__icon--cart {
+  right: -3em; /* Start from the right of the button */
+}
+
+/* --------- ANIMATIONS ----------- */
+.btn.active .btn__text--first {
+  animation: text1 0.3s forwards;
+}
+
+.btn.active .btn__text--second {
+  animation: text2 3s forwards;
+}
+
+.btn.active .btn__icon--cart {
+  animation: cart 2.5s forwards;
+}
+
+/* Keyframes for text and icon animations */
+@keyframes text1 {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes text2 {
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Updated Keyframes for GIF (cart) moving from right to left */
+@keyframes cart {
+  0% {
+    right: -3em; /* Start off-screen to the right */
+  }
+  50% {
+    right: 50%; /* Move to the center */
+    transform: translateX(50%);
+  }
+  100% {
+    right: calc(100% + 3em); /* Move off-screen to the left */
+  }
+}
